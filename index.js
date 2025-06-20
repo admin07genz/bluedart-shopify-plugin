@@ -1,18 +1,15 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const shopify = require("./shopify");
 
-app.use(express.json());
+app.use("/", shopify);
 
-// Route handlers
-require("./shopify")(app);
-require("./bluedart")(app);
-
-// Test route
 app.get("/", (req, res) => {
-  res.send("✅ BlueDart + Shopify Plugin is live on Render!");
+  res.send("Bluedart Plugin is running.");
 });
 
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
 });
+
