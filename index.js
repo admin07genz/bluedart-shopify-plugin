@@ -1,15 +1,12 @@
 const express = require("express");
 const app = express();
-const shopify = require("./shopify");
+const port = process.env.PORT || 3000;
 
-app.use("/", shopify);
-
-app.get("/", (req, res) => {
-  res.send("Bluedart Plugin is running.");
+// Dummy route to confirm deployment works
+app.get("/auth", (req, res) => {
+  res.send("Auth route is working ✅");
 });
 
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`🚀 Server is running on port ${port}`);
 });
-
